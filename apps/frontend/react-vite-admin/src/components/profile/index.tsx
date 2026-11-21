@@ -16,13 +16,15 @@ import {
 import {supabaseApi} from '@/supabase';
 import type {ReactElement} from 'react';
 import {useTranslation} from 'react-i18next';
-import IconAvatar from '@/assets/image/avatar.jpeg';
+import IconAvatarDark from '@/assets/image/avatar_dark.webp';
+import IconAvatarLight from '@/assets/image/avatar_light.webp';
 import useUserStore from '@/store/user';
 import {useShallow} from 'zustand/shallow';
 import {useHotkeys} from 'react-hotkeys-hook';
 import {useNavigate} from 'react-router';
 import {useConfirmDialog} from '@/hooks/use-confirm-dialog';
 import {shortcut} from '@workspace/utils';
+import { useTheme } from '@/hooks/use-theme';
 
 type TProps = {
   trigger?: ReactElement;
@@ -34,6 +36,7 @@ type TProps = {
 export default function Profile(props: TProps) {
   const {t} = useTranslation();
   const navigate = useNavigate();
+  const {theme} = useTheme();
   const {trigger, side = 'bottom', align = 'end', className} = props;
   const {user, setUser} = useUserStore(useShallow((state) => ({user: state.user, setUser: state.setUser})));
   const {confirm, Dialog} = useConfirmDialog();
@@ -77,7 +80,7 @@ export default function Profile(props: TProps) {
                 aria-label={t('common.settings')}
               >
                 <Avatar className="size-7">
-                  <AvatarImage src={IconAvatar} alt="" />
+                  <AvatarImage src={theme === 'dark' ? IconAvatarDark : IconAvatarLight} alt="" />
                   <AvatarFallback className="rounded">{user?.user_metadata?.username?.slice(0, 1)}</AvatarFallback>
                 </Avatar>
               </button>

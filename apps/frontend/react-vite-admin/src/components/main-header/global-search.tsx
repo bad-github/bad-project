@@ -16,11 +16,21 @@ import {
   CommandShortcut,
   Kbd,
   BadEmpty,
+  cn,
 } from '@badnpm/ui';
 import useTabStore from '@/store/tab-store';
 import {buildRouteSearchItems, filterRouteSearchItems} from './route-search';
 
-export default function GlobalSearch() {
+export default function GlobalSearch({compact = false, className}: {
+  /**
+   * 是否使用紧凑触发按钮，默认 false。
+   * true：仅显示搜索图标；false：显示图标、搜索文字和快捷键。
+   * 只影响触发按钮的外观，不影响搜索弹窗和键盘快捷键。
+   */
+  compact?: boolean;
+  /** 合并到搜索触发 Button，可覆盖默认样式；不影响弹窗。 */
+  className?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const routes = useTabStore((state) => state.allRoutes);
@@ -53,34 +63,28 @@ export default function GlobalSearch() {
 
   return (
     <>
-      <div className="flex shrink-0 items-center">
-        <Button
-          variant="ghost"
-          aria-label={t('search.title')}
-          aria-haspopup="dialog"
-          aria-expanded={open}
-          title={t('search.title')}
-          onClick={() => handleOpenChange(true)}
-          className="size-7 rounded-md p-0 @min-[48rem]/main-header:hidden"
-        >
-          <SearchIcon />
-        </Button>
-        <Button
-          variant="secondary"
-          aria-label={t('search.title')}
-          aria-haspopup="dialog"
-          aria-expanded={open}
-          onClick={() => handleOpenChange(true)}
-          className="text-muted-foreground hidden h-8 w-fit rounded-md px-3 @min-[48rem]/main-header:inline-flex"
-        >
-          <SearchIcon />
-          <span className="@min-[64rem]/main-header:hidden">{t('search.search')}</span>
-          <span className="hidden pr-12 @min-[64rem]/main-header:inline">{t('search.searchRoutes')}</span>
-          <CommandShortcut className="ml-6 rounded-md">
-            <Kbd className="bg-background">{shortcutLabel}</Kbd>
-          </CommandShortcut>
-        </Button>
-      </div>
+      <Button
+        variant="secondary"
+        aria-label={t('search.title')}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        title={t('search.title')}
+        onClick={() => handleOpenChange(true)}
+        className={cn(
+          compact
+            ? 'text-muted-foreground size-8 shrink-0 rounded-md p-0'
+            : 'text-muted-foreground h-8 w-full min-w-0 justify-start rounded-md px-2',
+          className
+        )}
+      >
+        <SearchIcon className="shrink-0" />
+        {!compact && (
+          <>
+            <span className="min-w-0 flex-1 truncate text-left">{t('search.searchRoutes')}</span>
+            <Kbd className="bg-background shrink-0">{shortcutLabel}</Kbd>
+          </>
+        )}
+      </Button>
       <CommandDialog
         open={open}
         onOpenChange={handleOpenChange}

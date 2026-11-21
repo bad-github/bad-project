@@ -10,7 +10,6 @@ import Profile from '../profile';
 import RouteBread from '../route-bread';
 import FullSwitch from '../full-switch';
 import Notify from '../notify';
-import GlobalSearch from './global-search';
 
 type TProps = {
   toggleSidebar: () => void;
@@ -41,7 +40,6 @@ export default function MainHeader(props: TProps) {
       </div>
       <RouteBread className="hidden min-w-0 overflow-hidden @min-[36rem]/main-header:block" />
       <div className="ml-auto flex shrink-0 items-center gap-0 @min-[24rem]/main-header:gap-1">
-        <GlobalSearch />
         <Preference />
         <FullSwitch />
         <LngSwitch />

@@ -34,10 +34,11 @@ import {getRoutes} from '@/request/route';
 import {stripRouteRuntimeFields, findOpenRoutes} from './tool';
 import Dropdown from './dropdown';
 import {tree} from '@workspace/utils';
+import GlobalSearch from '../main-header/global-search';
 
 export default function Menu() {
   const {t} = useTranslation();
-  const {state} = useSidebar();
+  const {state, isMobile} = useSidebar();
   const {pathname} = useLocation();
   const {tabs, activeRoute, addTab, openKeys, allRoutes, setActiveRoute, setOpenKeys, setAllRoutes} = useTabStore(
     useShallow((state) => ({
@@ -183,19 +184,23 @@ export default function Menu() {
   if (isLoading) {
     return (
       <div className="hidden w-64 space-y-4 overflow-hidden border-r px-4 py-8 md:block">
+        <div className="flex items-center gap-4">
+          <Skeleton className="h-12 w-12 rounded-full shrink-0" />
+          <Skeleton className="h-4 flex-1 h-8" />
+        </div>
         {Array.from({length: 8}).map((_, i) => (
-          <Skeleton key={i} className="h-16 flex-shrink-0" />
+          <Skeleton key={i} className="h-16 shrink-0" />
         ))}
       </div>
     );
   }
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
-        <SidebarMenu className="overflow-hidden">
-          <SidebarMenuItem>
+      <SidebarHeader className="p-0">
+        <SidebarMenu className="h-12 overflow-hidden border-b p-2">
+          <SidebarMenuItem className="flex items-center">
             <SidebarMenuButton
-              className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              className="p-0 hover:bg-transparent focus:bg-transparent active:bg-transparent"
               render={<Link to="/" aria-label="Back to home" />}
             >
               <IconKitty
@@ -203,6 +208,18 @@ export default function Menu() {
               />
               <h1 className="truncate text-lg font-semibold">Hello Kitty</h1>
             </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+        <SidebarMenu className="overflow-hidden p-2">
+          <SidebarMenuItem>
+            {/* 桌面侧栏收起时仅显示图标；移动端侧栏以抽屉展开，仍显示完整按钮。 */}
+            <GlobalSearch
+              className={cn(
+                'h-9 transition-all duration-200',
+                state === 'collapsed' && 'text-foreground bg-transparent'
+              )}
+              compact={state === 'collapsed' && !isMobile}
+            />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
