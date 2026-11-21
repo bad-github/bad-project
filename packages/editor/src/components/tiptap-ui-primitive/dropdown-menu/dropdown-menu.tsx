@@ -1,6 +1,7 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { cn } from "@workspace/editor/lib/tiptap-utils"
 import { CheckIcon } from "@workspace/editor/components/tiptap-icons/check-icon"
+import { useTheme } from "@workspace/editor/provider/theme-provider"
 
 import "@workspace/editor/components/tiptap-ui-primitive/dropdown-menu/dropdown-menu.scss"
 
@@ -13,11 +14,15 @@ function DropdownMenu({
 }
 
 function DropdownMenuPortal({
+  container,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
+  const { rootElement } = useTheme()
+
   return (
     <DropdownMenuPrimitive.Portal
       data-slot="tiptap-dropdown-menu-portal"
+      container={container === undefined ? rootElement : container}
       {...props}
     />
   )
@@ -41,7 +46,7 @@ function DropdownMenuContent({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
   return (
-    <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPortal>
       <DropdownMenuPrimitive.Content
         data-slot="tiptap-dropdown-menu-content"
         sideOffset={sideOffset}
@@ -50,7 +55,7 @@ function DropdownMenuContent({
         onCloseAutoFocus={(e) => e.preventDefault()}
         {...props}
       />
-    </DropdownMenuPrimitive.Portal>
+    </DropdownMenuPortal>
   )
 }
 

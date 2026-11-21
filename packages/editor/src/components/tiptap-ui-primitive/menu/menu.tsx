@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState } from "react"
 // -- Hooks --
 import { useOnClickOutside } from "@workspace/editor/hooks/use-on-click-outside"
 import { useComposedRef } from "@workspace/editor/hooks/use-composed-ref"
+import { useTheme } from "@workspace/editor/provider/theme-provider"
 
 // -- Utils --
 import { cn } from "@workspace/editor/lib/tiptap-utils"
@@ -105,6 +106,7 @@ export function MenuContent({
   ...props
 }: MenuContentProps) {
   const menuRef = useRef<HTMLDivElement | null>(null)
+  const { rootElement } = useTheme()
   const { open } = useMenuContext()
   const side = useMenuPlacement()
 
@@ -119,6 +121,7 @@ export function MenuContent({
       gutter={4}
       flip
       unmountOnHide
+      portalElement={rootElement}
       {...props}
     >
       {children}

@@ -28,6 +28,7 @@ import {
   FloatingDelayGroup,
 } from "@floating-ui/react"
 import "@workspace/editor/components/tiptap-ui-primitive/tooltip/tooltip.scss"
+import { useTheme } from "@workspace/editor/provider/theme-provider"
 
 interface TooltipProviderProps {
   children: React.ReactNode
@@ -205,6 +206,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
     propRef
   ) {
     const context = useTooltipContext()
+    const { rootElement } = useTheme()
     const ref = useMergeRefs([context.refs.setFloating, propRef])
 
     if (!context.open) return null
@@ -224,7 +226,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
     )
 
     if (portal) {
-      return <FloatingPortal {...portalProps}>{content}</FloatingPortal>
+      return <FloatingPortal {...portalProps} root={portalProps.root === undefined ? rootElement : portalProps.root}>{content}</FloatingPortal>
     }
 
     return content

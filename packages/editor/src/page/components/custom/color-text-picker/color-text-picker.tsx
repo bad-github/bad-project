@@ -31,7 +31,7 @@ export function ColorTextPicker({
   } = useColorText({
     editor,
     textColor: color,
-    label: `Color text to ${color || 'picker'}`,
+    label: 'Choose text color',
     hideWhenUnavailable,
     onApplied: ({color, label}) => console.log(`Applied ${label} text color: ${color}`),
   });

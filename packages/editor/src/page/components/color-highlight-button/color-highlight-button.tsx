@@ -8,7 +8,8 @@ export function GColorHighlightButton({editor}: {editor: Editor}) {
     <>
       <ColorHighlightButton
         editor={editor}
-        tooltip="Purple"
+        tooltip="Toggle purple highlight"
+        aria-label="Toggle purple highlight"
         highlightColor="var(--tt-color-highlight-purple)"
         text={showText ? 'Purple background' : ''}
         hideWhenUnavailable={hideWhenUnavailable}
@@ -18,7 +19,8 @@ export function GColorHighlightButton({editor}: {editor: Editor}) {
 
       <ColorHighlightButton
         editor={editor}
-        tooltip="Orange"
+        tooltip="Toggle orange highlight"
+        aria-label="Toggle orange highlight"
         highlightColor="oklch(90.1% 0.076 70.697)"
         text={showText ? 'Orange background' : ''}
         hideWhenUnavailable={hideWhenUnavailable}

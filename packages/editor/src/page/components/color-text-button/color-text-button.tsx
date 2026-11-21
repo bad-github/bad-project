@@ -10,7 +10,9 @@ export function GColorTextButton({editor}: {editor: Editor}) {
         editor={editor}
         textColor="var(--tt-color-text-blue)"
         text={showText ? 'Blue Text' : ''}
-        label="Apply Blue"
+        tooltip="Apply blue text"
+        aria-label="Apply blue text"
+        label="Apply blue text"
         hideWhenUnavailable={hideWhenUnavailable}
         showShortcut={showShortcut}
         onApplied={({color, label}) => console.log(`Applied ${label} text color: ${color}`)}
@@ -19,7 +21,9 @@ export function GColorTextButton({editor}: {editor: Editor}) {
         editor={editor}
         textColor="var(--tt-color-text-red)"
         text={showText ? 'Red Text' : ''}
-        label="Apply Red"
+        tooltip="Apply red text"
+        aria-label="Apply red text"
+        label="Apply red text"
         hideWhenUnavailable={hideWhenUnavailable}
         showShortcut={showShortcut}
         onApplied={({color, label}) => console.log(`Applied ${label} text color: ${color}`)}

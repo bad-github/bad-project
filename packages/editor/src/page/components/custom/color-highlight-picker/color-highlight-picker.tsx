@@ -39,7 +39,7 @@ export function ColorHighlightPicker({
     editor,
     highlightColor: color,
     useColorValue,
-    label: `Toggle highlight to (${color || 'picker'})`,
+    label: 'Choose highlight color',
     hideWhenUnavailable,
     mode,
     onApplied: ({color, label}) => console.log(`Applied ${label} text color: ${color}`),

@@ -1,5 +1,6 @@
 import * as PopoverPrimitive from "@radix-ui/react-popover"
 import { cn } from "@workspace/editor/lib/tiptap-utils"
+import { useTheme } from "@workspace/editor/provider/theme-provider"
 import "@workspace/editor/components/tiptap-ui-primitive/popover/popover.scss"
 
 function Popover({
@@ -15,13 +16,18 @@ function PopoverTrigger({
 }
 
 function PopoverContent({
+  container,
   className,
   align = "center",
   sideOffset = 4,
   ...props
-}: React.ComponentProps<typeof PopoverPrimitive.Content>) {
+}: React.ComponentProps<typeof PopoverPrimitive.Content> & {
+  container?: React.ComponentProps<typeof PopoverPrimitive.Portal>["container"]
+}) {
+  const { rootElement } = useTheme()
+
   return (
-    <PopoverPrimitive.Portal>
+    <PopoverPrimitive.Portal container={container === undefined ? rootElement : container}>
       <PopoverPrimitive.Content
         align={align}
         sideOffset={sideOffset}
