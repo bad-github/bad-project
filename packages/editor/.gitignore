@@ -33,3 +33,4 @@ dist-app
 .vercel/
 .vercel
 .env*
+!.env.example

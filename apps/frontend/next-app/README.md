@@ -225,8 +225,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 | 文件/目录                                                    | 用途                                      | 是否部署                                 |
 | ------------------------------------------------------------ | ----------------------------------------- | ---------------------------------------- |
-| [package.json](/Users/gych/D/code/bad-project/apps/frontend/next-app/package.json) | 构建、启动脚本和依赖版本                  | 普通模式需要；standalone 已包含运行依赖  |
-| [next.config.ts](/Users/gych/D/code/bad-project/apps/frontend/next-app/next.config.ts) | Next.js 构建配置；当前启用了 `standalone` | 只在构建时使用                           |
+| [package.json](./package.json) | 构建、启动脚本和依赖版本                  | 普通模式需要；standalone 已包含运行依赖  |
+| [next.config.ts](./next.config.ts) | Next.js 构建配置；当前启用了 `standalone` | 只在构建时使用                           |
 | `.env.local` / 部署平台环境变量                                | `SITE_URL` 等业务配置；变量清单见 `.env.example` | 本地文件不提交；生产环境须配置 |
 | `public/`                                                    | 直接通过 `/文件名` 访问的静态文件         | 需要复制                                 |
 | `.next/static/`                                              | 浏览器使用的 JS、CSS、字体、图片          | 必须复制                                 |
@@ -239,7 +239,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 #### 1. 重新构建
 
 ```
-cd /Users/gych/D/code/bad-project/apps/frontend/next-app
+# 从仓库根目录执行
+cd apps/frontend/next-app
 
 pnpm build
 ```
