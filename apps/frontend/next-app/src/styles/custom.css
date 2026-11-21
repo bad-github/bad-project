@@ -1,0 +1,31 @@
+:root {
+  --area: oklch(94% 0.0015 253.83);
+}
+
+.dark {
+  --area: oklch(27.4% 0.0015 253.83);
+}
+
+/* @theme 是 Tailwind CSS v4 的配置语法，不是浏览器原生 CSS。
+   :root 中定义 --area 只会创建 CSS 变量，不会提供 bg-area 类。
+   在 @theme 中定义 --color-area，才会让 Tailwind 支持 bg-area、text-area 等类；
+   构建时会根据源码中使用的类生成 CSS。
+
+   inline 决定生成的工具类引用什么：
+   普通 @theme：.bg-area { background-color: var(--color-area); }
+   @theme inline：.bg-area { background-color: var(--area); }
+   即把右侧表达式直接放进工具类，在使用该类的元素上解析 --area。
+   当变量引用其他变量、且变量可能在局部作用域变化时，这个区别很有用。 */
+@theme inline {
+  --color-area: var(--area);
+}
+
+/* 普通 @theme：定义可供 Tailwind 工具类使用的值。
+   --spacing-fluid-sm-lg 让 px-fluid-sm-lg、gap-fluid-sm-lg 等类可用。
+   例如 px-fluid-sm-lg 会生成：
+   padding-inline: var(--spacing-fluid-sm-lg);
+   这里直接定义 clamp(...)，没有引用其他变量，因此无需 inline。 */
+@theme {
+  /* 页面水平间距：在 sm 与 lg 之间从 2rem 增长到 10rem。 */
+  --spacing-fluid-sm-lg: clamp(2rem, 33.33vw - 11.33rem, 10rem);
+}

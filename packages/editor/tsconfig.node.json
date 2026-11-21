@@ -1,0 +1,14 @@
+{
+  "extends": "@workspace/typescript-config/vite.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "module": "esnext",
+    "types": ["node"],
+    // 保留 TS 5.9 的检查行为；严格模式另行迁移。
+    "strict": false,
+    "noUncheckedSideEffectImports": false
+  },
+  "include": ["vite.config.ts", "vite.base.config.ts", "vite.esm.config.ts", "vite.umd.config.ts", "vitest.config.ts"]
+}

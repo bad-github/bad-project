@@ -1,0 +1,11 @@
+{
+  "extends": "@workspace/typescript-config/base.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": false,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "bundler"
+  },
+  "include": ["src", "rollup.config.ts", "tests/contracts.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}

@@ -1,0 +1,2 @@
+# 强制所有文本文件使用 LF，且在检出时不再转回 CRLF
+* text=auto eol=lf

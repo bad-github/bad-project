@@ -1,0 +1,26 @@
+{
+  // 继承检查配置；下方选项与文件范围覆盖对应父配置。
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // 源码根目录，不负责选择编译文件。
+    "rootDir": "./src",
+    // 关闭 TS 项目引用模式，产物由 Rollup 管理。
+    "composite": false,
+    // 运行时构建不输出声明，交给独立 dts 插件。
+    "declaration": false,
+    // 不生成声明映射文件。
+    "declarationMap": false,
+    // 默认提供 TS 映射；插件按 BUILD_ENV 覆盖此值。
+    "sourceMap": true
+  },
+  // 只扫描库源码，不将 Rollup 配置作为库源码输出。
+  "include": [
+    "src"
+  ],
+  // 过滤入口扫描；显式导入的文件仍可能参与编译。
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts"
+  ]
+}

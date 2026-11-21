@@ -1,0 +1,120 @@
+.featureTable {
+  height: 100%;
+  padding-top: 16px;
+  .tableWrapper {
+    height: 100%;
+    overflow-y: hidden;
+  }
+  .table {
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 14px;
+    .thead {
+      width: 100%;
+      // 横向滚动通过表体联动
+      overflow-x: hidden;
+      // 强制滚动对齐，注意表头滚动条的宽度必须和表体宽度一致
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        // 隐藏横向滚动条
+        height: 0;
+        width: var(--th-scroll-width, 0px);
+      }
+      .tr {
+        display: flex;
+        width: fit-content;
+        .th {
+          position: relative;
+          background-color: var(--background);
+          text-align: left;
+          border-left: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+          border-top: 1px solid var(--border);
+          height: 32px;
+          display: flex;
+          align-items: center;
+          padding: 4px 6px;
+          overflow: hidden;
+          &:last-child {
+            border-right: 1px solid var(--border);
+          }
+          &:hover {
+            background-color: oklch(from var(--primary) l c h / 0.3);
+            .resizer {
+              opacity: 1;
+            }
+          }
+          &:has(.isResizing) {
+            background-color: oklch(from var(--primary) l c h / 0.3);
+          }
+        }
+      }
+    }
+    .tbodyWrapper {
+      position: relative;
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    .tbody {
+      .tr {
+        display: flex;
+        width: fit-content;
+        &:nth-child(2n) {
+          .td {
+            background-color: var(--background);
+          }
+        }
+        &:nth-child(2n + 1) {
+          .td {
+            background-color: var(--muted);
+          }
+        }
+        .td {
+          position: relative;
+          border-left: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+          height: 32px;
+          line-height: 32px;
+          padding: 0 6px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &:last-child {
+            border-right: 1px solid var(--border);
+          }
+        }
+      }
+    }
+    .sortIconGroup {
+      display: flex;
+      flex-direction: column;
+      padding-left: 6px;
+      svg {
+        width: 12px;
+        height: 10px;
+      }
+    }
+    .dragIcon {
+      position: absolute;
+      right: 8px;
+    }
+    .resizer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 6px;
+      background-color: var(--primary);
+      cursor: col-resize;
+      user-select: none;
+      touch-action: none;
+      opacity: 0;
+      &.isResizing {
+        background-color: var(--primary);
+        opacity: 1;
+      }
+    }
+  }
+}

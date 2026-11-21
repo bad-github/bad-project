@@ -1,0 +1,53 @@
+.table {
+  border-collapse: separate; // collapse在滚动时，表头会有1px的空隙
+  border-spacing: 0;
+  max-width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  overflow: auto;
+  .thead {
+    width: 100%;
+    overflow-x: scroll;
+    // 强制滚动对齐，注意表头滚动条的宽度必须和表体宽度一致
+    overflow-y: scroll;
+    flex-shrink: 0;
+    &::-webkit-scrollbar {
+      height: 0px;
+      width: var(--th-scroll-width, 100px);
+    }
+    .tr {
+      display: flex;
+      width: 100%;
+      .th {
+        background-color: var(--muted);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        min-height: 32px;
+        padding: 4px 6px;
+        border-left: 1px solid var(--border);
+        &:last-child {
+          border-right: 1px solid var(--border);
+        }
+      }
+    }
+  }
+  .tbody {
+    overflow-y: auto;
+    .tr {
+      display: flex;
+      width: 100%;
+      .td {
+        border-bottom: 1px solid var(--border);
+        border-left: 1px solid var(--border);
+        min-height: 32px;
+        padding: 4px 6px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        &:last-child {
+          border-right: 1px solid var(--border);
+        }
+      }
+    }
+  }
+}

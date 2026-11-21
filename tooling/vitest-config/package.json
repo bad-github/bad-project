@@ -1,0 +1,15 @@
+{
+  "name": "@workspace/vitest-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./base.js": {
+      "types": "./base.d.ts",
+      "default": "./base.js"
+    }
+  },
+  "dependencies": {
+    "vitest": "^5.0.5"
+  }
+}

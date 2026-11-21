@@ -1,0 +1,54 @@
+{
+  "name": "@workspace/mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "unpkg": "dist/umd/index.js",
+  "jsdelivr": "dist/umd/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs",
+      "default": "./dist/esm/index.mjs"
+    },
+    "./locales": {
+      "types": "./dist/types/locales.d.ts",
+      "import": "./dist/esm/locales.mjs",
+      "require": "./dist/cjs/locales.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "rollup -c -w --configPlugin typescript",
+    "build": "rimraf dist && rollup -c --configPlugin typescript",
+    "lint": "eslint .",
+    "test": "pnpm run build && tsc --noEmit -p tests/tsconfig.json && node --test tests/*.test.mjs",
+    "clean": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "eslint": "^10.2.1",
+    "rimraf": "6.0.1",
+    "rollup": "^4.60.0",
+    "rollup-plugin-dts": "^6.4.1",
+    "tslib": "^2.8.1",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

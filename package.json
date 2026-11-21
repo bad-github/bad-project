@@ -1,0 +1,69 @@
+{
+  "name": "bad-project",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prettier": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,css,scss}\"",
+    "prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,css,scss}\"",
+    "lint": "turbo run lint",
+    "lint:root": "eslint .",
+    "lint:packages": "turbo run lint --filter=./packages/*",
+    "typecheck": "turbo run typecheck",
+    "typecheck:packages": "turbo run typecheck --filter=./packages/*",
+    "dev:admin": "turbo run dev --filter=react-vite-admin",
+    "deploy:admin": "bash scripts/deploy-admin.sh",
+    "deploy:next": "bash scripts/deploy-next.sh",
+    "deploy:editor": "bash scripts/deploy-editor.sh",
+    "deploy:ui-base": "bash scripts/deploy-ui-base.sh",
+    "build:all": "turbo run build",
+    "build:packages": "turbo run build --filter=./packages/*",
+    "build:package-apps": "turbo run build:app --filter=@workspace/ui-base --filter=@workspace/editor",
+    "build:apps": "turbo run build --filter=./apps/**",
+    "build": "turbo run build",
+    "publish:utils": "pnpm -filter \"@workspace/utils\" publish",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "release": "changeset publish",
+    "prepare": "husky",
+    "dev": "turbo run dev --filter=react-vite-admin",
+    "dev:next": "turbo run dev --filter=next-app",
+    "dev:demo": "turbo run dev:dist --filter=@workspace/demo",
+    "dev:demo:dist": "turbo run dev:dist --filter=@workspace/demo",
+    "build:demo:dist": "turbo run build:dist --filter=@workspace/demo"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=24.22.1",
+    "npm": ">=12.2.0",
+    "pnpm": ">=12.14.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.14.0",
+      "onFail": "error"
+    }
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^10.2.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "turbo": "^2.9.9",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.59.1"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router": "^7.13.2"
+  }
+}

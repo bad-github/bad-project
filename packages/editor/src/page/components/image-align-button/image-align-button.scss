@@ -1,0 +1,13 @@
+.tiptap.ProseMirror {
+  img.g-align-image[data-align='left'] {
+    margin-right: auto;
+  }
+
+  img.g-align-image[data-align='center'] {
+    margin: 0 auto;
+  }
+
+  img.g-align-image[data-align='right'] {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  // 手动指定 VS Code 使用项目本地（node_modules 下）的 TypeScript 版本
+  "js/ts.tsdk.path": "./node_modules/typescript/lib"
+}

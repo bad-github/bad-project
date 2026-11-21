@@ -1,0 +1,31 @@
+.react-flow__devtools-changelogger {
+  pointer-events: none;
+  position: relative;
+  top: 50px;
+  left: 20px;
+  font-size: 12px;
+}
+
+.react-flow__devtools-nodeinspector {
+  pointer-events: none;
+  font-size: 10px;
+}
+
+/* 被连接目标的样式 */
+.my-react-flow .react-flow__handle.connectingto {
+  background: var(--color-destructive);
+}
+
+/* isValidConnection的连接目标 */
+.my-react-flow .react-flow__handle.valid {
+  background: var(--chart-2);
+}
+.my-react-flow .react-flow__node.highlight {
+  background-color: var(--color-primary);
+}
+
+/* source、target点的大小 */
+.my-react-flow .react-flow__handle {
+  width: 10px;
+  height: 10px;
+}

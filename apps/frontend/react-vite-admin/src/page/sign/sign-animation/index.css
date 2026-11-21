@@ -1,0 +1,13 @@
+@keyframes blink {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+}
+
+.animate-blink {
+  /* 使用 JS 传递过来的 CSS 变量，如果没有传则默认 0.15s */
+  animation: blink var(--blink-duration, 0.15s) ease-in-out;
+}

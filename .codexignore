@@ -1,0 +1,76 @@
+# Dependencies
+**/node_modules
+**/.pnpm-store
+**/.yarn
+**/.pnp.*
+
+# Package-manager lockfiles and install metadata
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+bun.lockb
+
+# Build outputs
+**/dist
+**/dist-ssr
+**/build
+**/out
+**/.output
+**/.vercel
+**/.netlify
+
+# Frontend framework caches
+**/.vite
+**/.vite-cache
+**/.next
+**/.nuxt
+**/.svelte-kit
+**/.astro
+**/.storybook-static
+
+# Test and coverage output
+**/coverage
+**/.nyc_output
+**/test-results
+**/playwright-report
+**/blob-report
+
+# Monorepo/build-system caches
+**/.turbo
+**/.turborepo
+**/.cache
+**/.parcel-cache
+**/.rollup.cache
+**/.eslintcache
+**/.stylelintcache
+**/.rpt2_cache
+**/tsconfig.tsbuildinfo
+**/*.tsbuildinfo
+
+# Backend/runtime outputs
+**/logs
+**/*.log
+**/tmp
+**/temp
+**/.tmp
+**/uploads
+**/storage
+**/vendor
+
+# Generated artifacts
+**/*.map
+**/stats.html
+**/storybook-static
+
+# Local environment and secrets
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
+
+# Editor and OS files
+**/.DS_Store
+**/Thumbs.db
+**/.idea
+**/.vscode
+!**/.vscode/extensions.json

@@ -1,0 +1,74 @@
+/* 动画工具类及关键帧。 */
+@theme {
+  /* 页面中使用
+  方式一：animate-[var(--animate-bad-scale)]
+  方式二：animate-bad-scale
+  */
+  --animate-bad-scale: bad-scale-delay 1s infinite ease-in-out both;
+
+  @keyframes bad-scale-delay {
+    0% {
+      transform: scale(0.6);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(0.6);
+    }
+
+    /* 0%,
+    80%,
+    100% {
+      transform: scale(0.2);
+    }
+
+    40% {
+      transform: scale(1.0);
+    } */
+  }
+
+  /* --animate-bad-spin: bad-spin 1s linear infinite; */
+  --animate-bad-spin: bad-spin 1s steps(12) infinite;
+
+  @keyframes bad-spin {
+    0% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  --animate-bad-bounce: bad-bounce 1s infinite;
+
+  @keyframes bad-bounce {
+
+    0%,
+    100% {
+      transform: translateY(-24px);
+      animation-timing-function: linear;
+    }
+
+    50% {
+      transform: none;
+      animation-timing-function: linear;
+    }
+  }
+}
+
+/* 页面主题切换时的 View Transition 行为。 */
+@layer base {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    @apply animate-none mix-blend-normal;
+
+    /* 关闭元素上的 CSS animation，例如旋转、闪烁。它不会关闭 transition（如悬停时颜色渐变 */
+    /* animation: none !important; */
+    /* 使用正常的颜色显示方式，不采用 multiply、screen 等混合模式。它不会关闭动画 */
+    /* mix-blend-mode: normal; */
+  }
+}

@@ -1,0 +1,35 @@
+/* 设置 HTML、body、标签默认样式 */
+@layer base {
+  /* 沿用应用原有的基础边框、焦点及默认字体。 */
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  html {
+    overflow-y: hidden;
+    overflow-x: auto;
+    /* 舒服的中英文排版 */
+    text-autospace: normal;
+  }
+
+  html,
+  body,
+  #g-root {
+    height: 100%;
+  }
+
+  [lang]:lang(zh) {
+    font-family:
+      'SF Pro SC', 'SF Pro Text', 'SF Pro Icons', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  }
+
+  /* 考虑是否需要 */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}

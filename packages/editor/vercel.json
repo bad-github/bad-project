@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm run build:app",
+  "outputDirectory": "dist-app",
+  "redirects": [
+    {"source": "/", "destination": "/editor/", "permanent": false},
+    {"source": "/editor", "destination": "/editor/", "permanent": false}
+  ],
+  "rewrites": [
+    {"source": "/editor/", "destination": "/index.html"},
+    {"source": "/editor/assets/:path*", "destination": "/assets/:path*"},
+    {"source": "/editor/favicon.svg", "destination": "/favicon.svg"},
+    {"source": "/editor/:path*", "destination": "/index.html"}
+  ]
+}

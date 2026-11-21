@@ -1,0 +1,27 @@
+{
+  "extends": "@workspace/typescript-config/react.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2023",
+    "useDefineForClassFields": true,
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "types": ["vite/client", "node"],
+    "strict": true,
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@workspace/i18n": ["../../../packages/i18n/src"],
+      "@workspace/i18n/*": ["../../../packages/i18n/src/*"],
+      "@workspace/mock": ["../../../packages/mock/src"],
+      "@workspace/mock/*": ["../../../packages/mock/src/*"],
+      "@workspace/utils": ["../../../packages/utils/src"],
+      "@workspace/supabase": ["../../../packages/supabase/src"],
+      // 处理 import { x } from '@workspace/editor'，主包引用
+      "@workspace/editor": ["../../../packages/editor/src"],
+      // 处理 import { x } from '@workspace/editor/components/...'，主包引用时，自己的包用了此写法
+      "@workspace/editor/*": ["../../../packages/editor/src/*"]
+    }
+  },
+  "include": ["src", "src/vite-env.d.ts", "src/global.d.ts", "tailwind.config.ts"]
+}

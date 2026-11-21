@@ -1,0 +1,15 @@
+{
+  "name": "@workspace/typescript-config",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "exports": {
+    "./base.json": "./base.json",
+    "./vite.json": "./vite.json",
+    "./react.json": "./react.json",
+    "./next.json": "./next.json"
+  }
+}

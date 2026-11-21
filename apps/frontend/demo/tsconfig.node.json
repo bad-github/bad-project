@@ -1,0 +1,10 @@
+{
+  "extends": "@workspace/typescript-config/vite.json",
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "ESNext",
+    "lib": ["ES2023"],
+    "types": ["node"]
+  },
+  "include": ["vite.config.ts"]
+}

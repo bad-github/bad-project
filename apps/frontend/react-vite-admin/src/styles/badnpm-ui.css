@@ -1,0 +1,7 @@
+/* Tailwind v4 统一编译入口：包含库主题、状态变体、动画及组件扫描范围。
+   不再同时引入 tailwindcss、styles/index.css 或 theme-tokens.css，避免重复工具类。 */
+@import '@badnpm/ui/styles/tailwind.css';
+/* 可选页面背景和滚动条，不包含另一套工具类。 */
+@import '@badnpm/ui/styles/custom.css';
+/* 后台使用库提供的 Geist 字体；next-app 继续使用 next/font。 */
+@import '@badnpm/ui/styles/font/geist.css';

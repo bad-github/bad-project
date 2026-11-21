@@ -1,0 +1,39 @@
+packages:
+  - 'packages/*'
+  - 'apps/frontend/*'
+  - 'apps/backend/*'
+  - 'tooling/*'
+
+# pnpm 12 从工作区配置读取版本约束和依赖覆盖规则。
+engineStrict: true
+# 校验本机 pnpm 版本，不自动下载或切换包管理器。
+pmOnFail: error
+
+overrides:
+  "@types/react": "^19.2.14"
+  "@types/react-dom": "^19.2.3"
+  "react": "^19.2.4"
+  "react-dom": "^19.2.4"
+  "react-router": "^7.13.2"
+  "typescript": "6.0.3"
+  "vitest": "^5.0.5"
+  "zod": "^3.25.0"
+  "@apollo/client": "^4.1.6"
+  "react-arborist": "^3.4.3"
+  "prettier-plugin-tailwindcss": "^0.7.2"
+  "vite-plugin-svgr": "^5.0.0"
+  "eslint-plugin-react-hooks": "^7.1.1"
+  "react-hotkeys-hook": "^5.2.4"
+
+# 明确管理依赖安装脚本；不影响项目自身的 build 等脚本。
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  msw: false
+  sharp: false
+  unrs-resolver: false
+# 允许立即安装刚发布的自有 UI 包版本，跳过 minimumReleaseAge 的发布时间等待限制。
+# 仅豁免下列指定版本，不锁定依赖版本；超过等待期限后可移除此项。
+minimumReleaseAgeExclude:
+  - "@badnpm/ui@0.0.4"

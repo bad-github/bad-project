@@ -1,0 +1,59 @@
+/* 焦点工具类保留原有 base 层优先级。 */
+@layer base {
+  .no-focus-ring {
+    @apply focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:shadow-none;
+  }
+}
+
+/* 通用布局和视觉工具类。 */
+@layer utilities {
+  .custom-color1-class {
+    color: var(--custom-color1);
+  }
+
+  .full-child {
+    >* {
+      &:first-child {
+        padding: 0.75rem;
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+      }
+    }
+  }
+
+  .hover-animated-border {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 0.375rem;
+      border: 1px solid var(--primary);
+      pointer-events: none;
+      transform: scale(0);
+      transition: transform 300ms;
+    }
+
+    &:hover::before {
+      transform: scale(1);
+    }
+  }
+
+  .bg-grid {
+    @apply absolute top-0 left-0 w-full h-full z-[-1] pointer-events-none;
+    background-image:
+      repeating-linear-gradient(0deg,
+        transparent,
+        transparent calc(var(--grid-size, 30px) - 1px),
+        var(--muted) calc(var(--grid-size, 30px) - 1px),
+        var(--muted) var(--grid-size, 30px)),
+      repeating-linear-gradient(-90deg,
+        transparent,
+        transparent calc(var(--grid-size, 30px) - 1px),
+        var(--muted) calc(var(--grid-size, 30px) - 1px),
+        var(--muted) var(--grid-size, 30px));
+    background-size: var(--grid-size, 30px) var(--grid-size, 30px);
+  }
+}

@@ -1,0 +1,60 @@
+/* 主题变量、亮暗色配置及颜色工具类映射。 */
+@config "../../tailwind.config.ts";
+
+:root {
+  --custom-color1: red;
+  --muted-opacity-50: oklch(from var(--muted) l c h / 0.5);
+  /*
+  oklch(from color l c h / alpha)：CSS Color Level 5的语法 
+  lch:Lightness明度（亮 / 暗）、Chroma色彩强度（鲜艳程度）、Hue色相（颜色类型） 
+  */
+  --primary-opacity-30: oklch(from var(--primary) l c h / 0.3);
+  --area-foreground: oklch(21.03% 0.0059 253.83);
+  --mask: 'rgba(255, 255, 255, 0.8)';
+  --active: oklch(0.488 0.243 264.376);
+}
+
+.dark {
+  --custom-color1: purple;
+  --area-foreground: oklch(99.11% 0 0);
+  --mask: 'rgba(0, 0, 0, 0.8)';
+  --active: oklch(0.488 0.243 264.376);
+}
+
+@theme {
+  /* @theme或tailwind.config.ts定义的变量可以说使用相应的工具或变体 */
+  /* 
+  class:bg/text-custom-color2
+  style:var(--color-custom-color2)
+  */
+  --color-custom-color2: orange;
+
+}
+
+/*
+inline的作用是什么：
+如下定义了一个主题变量--color-custom-color3，值是 var(--custom-color1)。但不会去提前解析它，而是保留这个表达式原样输出到 CSS 里。
+生成出来的css是
+:root {
+  --color-custom-color3: var(--custom-color1);
+}
+这允许你在任意地方定义--custom-color1，并且支持作用域动态变色
+
+如果不加inline，则会尝试解析 var(--custom-color1)，如果此时 --custom-color1 还没定义，它可能会变成
+:root {
+  --color-custom-color3: ;
+}
+ */
+@theme inline {
+  --color-custom-color3: var(--custom-color1);
+  --color-custom-color4: green;
+  --color-area-foreground: var(--area-foreground);
+  --color-active: var(--active);
+}
+
+/* todo:局部作用于也没生效 */
+.button1 {
+  @theme inline {
+    --btn-color: var(--custom-color1);
+  }
+}
