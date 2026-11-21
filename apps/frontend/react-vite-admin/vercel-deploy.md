@@ -1,5 +1,7 @@
 # react-vite-admin 部署到 Vercel
 
+Cloudflare 部署见 [Cloudflare 部署指南](./cloudflare-deploy.md)。
+
 采用本地预构建流程，部署 `dist`，访问地址为 `https://你的域名/g/`。
 
 ## 配置与执行目录
@@ -52,10 +54,10 @@ pnpm dlx vercel@latest deploy --prebuilt --prod --local-config "$config_path"
 已登录并关联后，可以直接在仓库根目录执行：
 
 ```bash
-pnpm deploy:admin
+pnpm deploy:admin:vercel
 ```
 
-该命令调用 `scripts/deploy-admin.sh`，自动进入 admin 目录，依次执行下面的拉取、构建和发布命令；任一步失败都会停止。
+该命令调用 `scripts/deploy-admin-vercel.sh`，自动进入 admin 目录，依次执行下面的拉取、构建和发布命令；任一步失败都会停止。
 
 已登录并关联后，在 `apps/frontend/react-vite-admin` 执行：
 

@@ -25,3 +25,8 @@ dist-ssr
 
 stats.html
 .vercel
+
+# Cloudflare local state and secrets
+.wrangler/
+.dev.vars
+.dev.vars.*

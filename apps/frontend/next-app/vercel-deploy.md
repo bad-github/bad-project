@@ -53,10 +53,10 @@ pnpm dlx vercel@latest deploy --prebuilt --prod --archive=tgz --local-config ./v
 已登录并关联后，可以直接在仓库根目录执行：
 
 ```bash
-pnpm deploy:next
+pnpm deploy:next:vercel
 ```
 
-该命令调用 `scripts/deploy-next.sh`，自动进入 next-app 目录，依次执行下面的拉取、构建和发布命令；任一步失败都会停止。
+该命令调用 `scripts/deploy-next-vercel.sh`，自动进入 next-app 目录，依次执行下面的拉取、构建和发布命令；任一步失败都会停止。
 
 在 `apps/frontend/next-app` 执行：
 

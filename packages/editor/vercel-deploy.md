@@ -49,10 +49,10 @@ pnpm dlx vercel@latest deploy --prebuilt --prod --local-config "$config_path"
 已登录并关联后，可以直接在仓库根目录执行：
 
 ```bash
-pnpm deploy:editor
+pnpm deploy:editor:vercel
 ```
 
-该命令调用 `scripts/deploy-editor.sh`，自动进入 editor 目录，依次执行下面的拉取、构建和发布命令；任一步失败都会停止。构建使用 `vercel.json` 中的 `build:app`，仅部署 app。
+该命令调用 `scripts/deploy-editor-vercel.sh`，自动进入 editor 目录，依次执行下面的拉取、构建和发布命令；任一步失败都会停止。构建使用 `vercel.json` 中的 `build:app`，仅部署 app。
 
 在 `packages/editor` 执行：
 
