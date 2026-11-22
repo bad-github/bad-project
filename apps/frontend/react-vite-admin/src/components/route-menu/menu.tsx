@@ -197,8 +197,8 @@ export default function Menu() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="p-0">
-        <SidebarMenu className="h-12 overflow-hidden border-b p-2">
-          <SidebarMenuItem className="flex items-center">
+        <SidebarMenu className="h-12 overflow-hidden border-b">
+          <SidebarMenuItem className="flex items-center p-2">
             <SidebarMenuButton
               className="p-0 hover:bg-transparent focus:bg-transparent active:bg-transparent"
               render={<Link to="/" aria-label="Back to home" />}
@@ -210,8 +210,8 @@ export default function Menu() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        <SidebarMenu className="overflow-hidden p-2">
-          <SidebarMenuItem>
+        <SidebarMenu className="overflow-hidden">
+          <SidebarMenuItem className="p-2">
             {/* 桌面侧栏收起时仅显示图标；移动端侧栏以抽屉展开，仍显示完整按钮。 */}
             <GlobalSearch
               className={cn(
